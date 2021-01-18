@@ -1,0 +1,30 @@
+<ion-header *ngIf="isApp">
+<ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="isApp" style="--padding-start:10px">
+  <p>
+    Sed in neque at nibh congue tincidunt.
+    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+    Suspendisse potenti.
+    Donec magna odio, semper ac nibh et, vestibulum eleifend felis. Donec pulvinar ex non quam vulputate malesuada in a magna. Praesent massa arcu, vehicula id pharetra et, cursus at lectus.
+  </p>
+</ion-content>
+
+<ion-content *ngIf="!isApp" class="desktop" style="--padding-start:20px">
+  <ion-text color="dark" align="center">
+    <h4>Settings</h4>
+  </ion-text>
+  <p>
+    Sed in neque at nibh congue tincidunt.
+    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+    Suspendisse potenti.
+    Donec magna odio, semper ac nibh et, vestibulum eleifend felis. Donec pulvinar ex non quam vulputate malesuada in a magna. Praesent massa arcu, vehicula id pharetra et, cursus at lectus.
+  </p>
+  
+</ion-content>

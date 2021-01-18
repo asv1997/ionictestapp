@@ -1,20 +1,125 @@
-<ion-header [translucent]="true">
+<ion-header *ngIf="isApp">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+     </ion-buttons>
+    <ion-title><p [align]="(!isApp ? 'center' : '')">GulpFood</p></ion-title>
+    <ion-buttons slot="primary" *ngIf="!isApp">
+      <ion-button color="primary"><ion-icon name="phone-portrait-outline"></ion-icon>Get App</ion-button>
+    </ion-buttons>
   </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
   </ion-header>
+  
+<ion-content class="desktop" *ngIf="!isApp">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-searchbar  showCancelButton="focus"> </ion-searchbar>
+        </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-text color="dark" align="center">
+      <h4>Today's Specials</h4>
+    </ion-text>
+    <ion-grid>
+      
+      <ion-row>
+        <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+          <ion-list>
+            <ion-item
+              *ngFor="let food of loadedFoods"
+              [routerLink]="['/']"
+              detail
+            >
+              <ion-thumbnail slot="start">
+                <ion-img [src]="food.imageUrl"></ion-img>
+              </ion-thumbnail>
+              <ion-label>
+                <h2>{{ food.title }}</h2>
+                <p>{{ food.description }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content *ngIf="isApp">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-searchbar  showCancelButton="focus"> </ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col size="2" offset="8">
+       
+          <ion-button color="primary" size="small"><ion-icon name="Map"></ion-icon></ion-button>
+        
+      </ion-col>
+      <ion-col size="2" >
+       
+        <ion-button color="primary" size="small"><ion-icon name="Funnel"></ion-icon></ion-button>
+      
+    </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+ </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-text color="dark" align="center">
+    <h4>Today's Specials</h4>
+  </ion-text>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ loadedFoods[0].title }}</ion-card-title>
+            <ion-card-subtitle
+              >{{ loadedFoods[0].price | currency }} / Piece</ion-card-subtitle
+            >
+          </ion-card-header>
+          <ion-img [src]="loadedFoods[0].imageUrl"></ion-img>
+          <ion-card-content>
+            <p>{{ loadedFoods[0].description }}</p>
+          </ion-card-content>
+          <div>
+            <ion-button
+              fill="clear"
+              color="primary"
+              [routerLink]="[
+                '/'
+              ]"
+            >
+              More
+            </ion-button>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+        <ion-list>
+          <ion-item
+            *ngFor="let food of loadedFoods.slice(1)"
+            [routerLink]="['/']"
+            detail
+          >
+            <ion-thumbnail slot="start">
+              <ion-img [src]="food.imageUrl"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{ food.title }}</h2>
+              <p>{{ food.description }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
 </ion-content>

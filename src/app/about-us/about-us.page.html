@@ -1,0 +1,32 @@
+<ion-header  *ngIf="isApp">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>About us</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="isApp" style="--padding-start:10px">
+  <p>
+    I saw a werewolf with a Chinese menu in his hand.
+    Walking through the <ion-text color="danger"><sub>streets</sub></ion-text> of Soho in the rain.
+    He <ion-text color="primary"><i>was</i></ion-text> looking for a place called Lee Ho Fook's.
+    Gonna get a <ion-text color="secondary"><a>big dish of beef chow mein.</a></ion-text>
+    <ion-text color="danger"><ion-icon name="cut"></ion-icon></ion-text>
+  </p>
+</ion-content>
+
+<ion-content *ngIf="!isApp" class="desktop" style="--padding-start:20px">
+  <ion-text color="dark" align="center">
+    <h4>About us</h4>
+  </ion-text>
+  <p>
+    I saw a werewolf with a Chinese menu in his hand.
+    Walking through the <ion-text color="danger"><sub>streets</sub></ion-text> of Soho in the rain.
+    He <ion-text color="primary"><i>was</i></ion-text> looking for a place called Lee Ho Fook's.
+    Gonna get a <ion-text color="secondary"><a>big dish of beef chow mein.</a></ion-text>
+    <ion-text color="danger"><ion-icon name="cut"></ion-icon></ion-text>
+  </p>
+  
+</ion-content>

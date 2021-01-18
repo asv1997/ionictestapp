@@ -1,3 +1,105 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-header *ngIf="!isApp">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+       </ion-buttons>
+      <ion-title><p [align]="(!isApp ? 'center' : '')">GulpFood</p></ion-title>
+      <ion-buttons slot="primary" *ngIf="!isApp">
+        <ion-button color="primary"><ion-icon name="phone-portrait-outline"></ion-icon>Get App</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    </ion-header>
+  <ion-menu>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>
+          GulpFood
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/">
+            <ion-icon name="home" slot="start"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+          <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/about-us">
+            <ion-icon name="people" slot="start"></ion-icon>
+            <ion-label>About us</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/settings">
+            <ion-icon name="settings" slot="start"></ion-icon>
+            <ion-label>Settings</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle *ngIf="isApp">
+          <ion-item lines="none" routerLink="/">
+            <ion-icon name="notifications" slot="start"></ion-icon>
+            <ion-label>Notifications</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ng-container *ngIf="!isApp">
+          <ion-menu-toggle>
+            <ion-item lines="none" routerLink="/">
+              <ion-icon name="cart" slot="start"></ion-icon>
+              <ion-label>Orders</ion-label>
+              <ion-badge>6</ion-badge>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none" routerLink="/">
+              <ion-icon name="restaurant" slot="start"></ion-icon>
+              <ion-label>Restaurants</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none" routerLink="/">
+              <ion-icon name="person-circle" slot="start"></ion-icon>
+              <ion-label>Profile</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none" routerLink="/">
+              <ion-icon name="information-circle" slot="start"></ion-icon>
+              <ion-label>Help</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+        </ng-container>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+<ion-router-outlet main></ion-router-outlet>
+<ion-tabs *ngIf="isApp">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button >
+      <ion-icon name="cart"></ion-icon>
+      <ion-label>Orders</ion-label>
+      <ion-badge>6</ion-badge>
+    </ion-tab-button>
+ <ion-tab-button >
+      <ion-icon name="restaurant"></ion-icon>
+      <ion-label>Restaurants</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button>
+      <ion-icon name="person-circle"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button >
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>Help</ion-label>
+    </ion-tab-button>
+
+
+
+  </ion-tab-bar>
+</ion-tabs>
 </ion-app>
